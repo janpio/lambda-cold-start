@@ -3,12 +3,16 @@ import { objectType, extendType } from "@nexus/schema";
 const User = objectType({
   name: "User",
   definition(t) {
-    t.model.id();
-    t.model.name();
-    t.model.email();
-    t.model.image();
-    t.model.emailVerified();
-    t.model.createdAt();
+    t.nonNull.int('id');
+    t.nonNull.string('name');
+    t.string('email');
+    t.string('image');
+    t.field('emailVerified', {
+      type: 'DateTime'
+    })
+    t.nonNull.field('createdAt', {
+      type: 'DateTime'
+    })
   },
 });
 
@@ -31,7 +35,7 @@ const Query = extendType({
         return result;
       },
     });
-    t.crud.user();
+    //t.crud.user();
   },
 });
 

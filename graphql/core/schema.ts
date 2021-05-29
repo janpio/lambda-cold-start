@@ -1,6 +1,7 @@
-import { nexusPrisma } from "nexus-plugin-prisma";
+//import { nexusPrisma } from "nexus-plugin-prisma";
 import { makeSchema, fieldAuthorizePlugin } from "nexus";
 import path from "path";
+import { DateTime } from './types/DateTime'
 
 import User from "./schema/user";
 
@@ -10,9 +11,9 @@ const shouldGenerateArtifacts =
   process.env.NODE_ENV === "development" || process.env.GENERATE === "true";
 
 export const schema = makeSchema({
-  types: [User],
+  types: [User, DateTime],
   plugins: [
-    nexusPrisma({ shouldGenerateArtifacts, experimentalCRUD: true }),
+    //nexusPrisma({ shouldGenerateArtifacts, experimentalCRUD: true }),
     fieldAuthorizePlugin(),
   ],
   contextType: {
