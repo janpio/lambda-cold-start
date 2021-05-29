@@ -5,9 +5,9 @@ const User = objectType({
   definition(t) {
     t.nonNull.int('id');
     t.nonNull.string('name');
-    t.nonNull.string('email');
-    t.nonNull.string('image');
-    t.nonNull.field('emailVerified', {
+    t.string('email');
+    t.string('image');
+    t.field('emailVerified', {
       type: 'DateTime'
     })
     t.nonNull.field('createdAt', {
@@ -27,7 +27,8 @@ const Query = extendType({
         const result = [
           {
             id: 1,
-            name: "styxlab"
+            name: "styxlab",
+            createdAt: new Date(),
           },
         ];
         console.log("allUsers2", Date.now());
